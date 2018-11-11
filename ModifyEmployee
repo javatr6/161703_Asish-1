@@ -1,0 +1,97 @@
+case 2:
+			System.out.println("Enter your employee Id: ");
+
+			String empid=scanner.nextLine();
+			if(service.isValidEmpId(empid)){
+				List<EmployeeBean> empBean2=service.getAllEmployeeDetails(empid);
+				Iterator<EmployeeBean> iterator1=empBean2.iterator();
+				while(iterator1.hasNext()){
+					System.out.println(iterator1.next());
+				}
+				System.out.println("\n");
+				System.out.println("Modify your Details here...");
+				System.out.println("\n");
+				System.out.println("Employee id: "+empid);
+				System.out.println("Enter new First Name: ");
+
+				String fname=scanner.nextLine();
+				if(validate.isValidFirstName(fname)) {
+					System.out.println("New First Name:"+fname);
+
+					System.out.println("Enter New Last Name:");
+					String lname=scanner.nextLine();
+					System.out.println("New Last Name:"+lname);
+					if(validate.isValidLastName(lname)) {
+
+						System.out.println("Enter New Dept Id: ");
+						Integer deptId=scanner.nextInt();
+						System.out.println("New Dept Id: "+deptId);
+
+
+						System.out.println("Enter new Grade:");
+						scanner.nextLine();
+						String grade=scanner.nextLine();
+						System.out.println("New grade:"+grade);
+						if(validate.isValidGrade(grade)) {
+
+							System.out.println("Enter new Designation: ");
+							String designation=scanner.nextLine();
+							System.out.println("New Designation: "+designation);
+
+							System.out.println("Enter New Basic: ");
+							Integer basic=scanner.nextInt();
+							System.out.println("New Basic: "+basic);
+
+							System.out.println("Enter updated Marital status: ");
+							scanner.nextLine();
+							String maritalStatus=scanner.nextLine();
+							if(validate.isValidMartialStatus(maritalStatus)) {
+								System.out.println("Updated Marital status: "+maritalStatus);
+
+								System.out.println("Enter Updated Home address: ");
+								String hAddress=scanner.nextLine();
+								if(validate.isValidHomeAddress(hAddress)) {
+									System.out.println("Updated Home address: "+hAddress);
+
+									System.out.println("Enter Updated contact no: ");
+									String contact=scanner.nextLine();
+									if(validate.isValidContactNumber(contact)) {
+										System.out.println("Updated Contact Number: "+contact);
+
+										Integer Update=service.UpdateDetails(empid,fname,lname,deptId,grade,designation,basic,maritalStatus,hAddress,contact);
+
+										if(Update>0){
+											System.out.println("Updated Successfully...");
+										}
+										else{
+											System.out.println("Failed to Update...");
+										}
+									}
+									else {
+										System.out.println("Enter Valid Contact Number..");
+									}
+								}
+								else {
+									System.out.println("Enter Valid Home Address...");
+								}
+							}
+							else {
+								System.out.println("Enter Valid Marital Status..");
+							}
+						}
+						else {
+							System.out.println("Enter Valid Grade...");
+						}
+					}
+					else {
+						System.out.println("Enter valid last name..");
+					}
+				}
+				else {
+					System.out.println("Enter Valid First Name..");
+				}
+			}
+			else{
+				System.out.println("Enter valid Employee Id :");
+			}
+			break; 
